@@ -1,12 +1,12 @@
-sudo: true
-
 env:
   global:
     - BRANCH=v1.1.0
-    - QUIET=1
+
+sudo: true
 
 install:
   - curl -sLo - http://j.mp/install-travis-docker | sh -xe
 
 script:
-  - ./run 'docker -v && docker-compose -v'
+  - ./run 'docker build -t test . && docker run test'
+  - ./run 'docker-compose up -d blog && docker ps'
