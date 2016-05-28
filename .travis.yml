@@ -2,6 +2,7 @@ sudo: true
 
 env:
   global:
+    - BRANCH=v1.1.0
     - QUIET=1
 
 install:
