@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+    nginx:
+        image: nginx:1.9
+        volumes:
+            - .:/srv
+        environment:
+            - VIRTUAL_HOST=domain.docker
+        links:
+            - php
+
+    php:
+        build: docker/php
+        image: mykiwi/php_symfony_db:7.0-fpm
+        volumes:
+            - .:/srv
+            - /srv/var/cache
+            - /srv/var/logs
+            - /srv/var/sessions
+        environment:
+            - SYMFONY_ENV=dev
+        links:
+            - mysql
+            - pgsql
+
+    mysql:
+        image: mysql:5.7
+        environment:
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=pass
+
+    pgsql:
+        image: postgres:9.5
+        environment:
+            - POSTGRES_USER=user
+            - POSTGRES_PASSWORD=pass

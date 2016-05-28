@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+    symfony:
+        build: docker/php
+        image: mykiwi/php_symfony:7.0-fpm
+        working_dir: /srv
+        volumes:
+            - .:/srv
+            - /srv/var/cache
+            - /srv/var/logs
+            - /srv/var/sessions
+        command: php bin/console server:run 0.0.0.0:80
+        environment:
+            - VIRTUAL_HOST=domain.docker
+            - SYMFONY_ENV=dev
+        expose:
+            - "80"
