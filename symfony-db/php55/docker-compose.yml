@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+    nginx:
+        image: nginx:1-alpine
+        volumes:
+            - .:/srv:ro
+            - ./docker/nginx/app.conf:/etc/nginx/conf.d/default.conf:ro
+        links:
+            - php
+
+    php:
+        build: docker/php
+        image: mykiwi/symfony-db:5.5-fpm
+        volumes:
+            - .:/srv
+            - /srv/var/cache
+            - /srv/var/logs
+            - /srv/var/sessions
+        environment:
+            - SYMFONY_ENV=dev
+        links:
+            - mysql
+            - pgsql
+
+    mysql:
+        image: mysql:5.7
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=pass
+
+    pgsql:
+        image: postgres:9.5
+        environment:
+            - POSTGRES_USER=user
+            - POSTGRES_PASSWORD=pass

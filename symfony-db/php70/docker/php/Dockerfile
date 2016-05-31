@@ -1,4 +1,4 @@
-FROM mykiwi/symfony-base:5.5-fpm
+FROM mykiwi/symfony-base:7.0-fpm
 
 # postgresql
 RUN apt-get update && \
