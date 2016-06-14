@@ -1,12 +1,14 @@
 sudo: true
 
 env:
-  global:
-    - BRANCH=v1.1.0
-    - QUIET=1
+  DOCKER_COMPOSE_VERSION: 1.7.2
 
-install:
-  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
 script:
-  - ./run 'docker -v && docker-compose -v'
+  - docker -v && docker-compose -v
+
