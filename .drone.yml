@@ -2,3 +2,8 @@ build:
     image: mykiwi/docker
     commands:
         - make build
+
+compose:
+    dind:
+        image: docker:dind
+        privileged: true
