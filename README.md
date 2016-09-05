@@ -1,3 +1,4 @@
 # Dockerfiles
 
-[![Build Status](https://img.shields.io/travis/romqin/dockerfiles.svg?maxAge=2592000)](https://travis-ci.org/romqin/dockerfiles)
+[![Build Status](https://drone.mykiwi.sbrk.org/api/badges/romqin/dockerfiles/status.svg)](https://drone.mykiwi.sbrk.org/romqin/dockerfiles)
+
