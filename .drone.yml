@@ -1,5 +1,4 @@
 build:
     image: mykiwi/docker
     commands:
-        - cd build && docker-compose build
-
+        - make build
