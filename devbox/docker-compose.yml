@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  devbox:
+    build: .
+    image: mykiwi/devbox
+    container_name: devbox
+    hostname: devbox
+    volumes:
+      - ~/dev:/home/mykiwi/dev
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - '20000:20000'
