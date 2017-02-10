@@ -42,6 +42,7 @@ RUN useradd mykiwi --shell /bin/zsh                                             
     echo '%mykiwi ALL= NOPASSWD: ALL' >> /etc/sudoers                                                            && \
     mkdir -p /home/mykiwi/.ssh/                                                                                  && \
     mkdir -p /home/mykiwi/.php/ini                                                                               && \
+    touch /home/mykiwi/.z                                                                                        && \
     wget https://github.com/mykiwi.keys -O /home/mykiwi/.ssh/authorized_keys                                     && \
     chown -R mykiwi:mykiwi /home/mykiwi                                                                          && \
     chmod 700 /home/mykiwi/.ssh                                                                                  && \
