@@ -47,7 +47,6 @@ RUN useradd mykiwi --shell /bin/zsh                                             
     chown -R mykiwi:mykiwi /home/mykiwi                                                                          && \
     chmod 700 /home/mykiwi/.ssh                                                                                  && \
     chmod 600 /home/mykiwi/.ssh/authorized_keys                                                                  && \
-    usermod -aG games mykiwi                                                                                     && \
     sudo -u mykiwi zsh -c '                                                                                         \
         cd /home/mykiwi                                                                                          && \
         git clone --recursive https://github.com/mykiwi/dotfiles.git .dotfiles                                   && \
