@@ -3,7 +3,7 @@ version: '2'
 services:
     symfony:
         build: docker/php
-        image: mykiwi/symfony-base:5.5-fpm
+        image: mykiwi/symfony-base:7.1-fpm
         working_dir: /srv
         volumes:
             - .:/srv

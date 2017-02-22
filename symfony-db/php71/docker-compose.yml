@@ -11,7 +11,7 @@ services:
 
     php:
         build: docker/php
-        image: mykiwi/symfony-db:5.5-fpm
+        image: mykiwi/symfony-db:7.1-fpm
         volumes:
             - .:/srv
             - /srv/var/cache
