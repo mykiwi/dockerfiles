@@ -3,7 +3,7 @@ MAINTAINER r. gautier <mail@romain.sh>
 
 RUN printf "\n[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch\n" >> /etc/pacman.conf
 
-RUN pacman -Sy --noconfirm --noprogressbar --needed                                                                 \
+RUN pacman -Syy --noconfirm --noprogressbar --needed                                                                \
         base-devel                                                                                                  \
         yaourt                                                                                                      \
         openssh                                                                                                     \

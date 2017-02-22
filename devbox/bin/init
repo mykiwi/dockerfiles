@@ -1,7 +1,4 @@
 #!/bin/bash
-/usr/bin/sshd -D
 
-GROUP=`stat -c "%G" /var/run/docker.sock`
-if ["$GROUP" != "UNKNOWN"]; then
-    usermod -aG $GROUP mykiwi
-fi
+/usr/bin/ssh-keygen -A
+/usr/sbin/sshd -D
