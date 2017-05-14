@@ -11,4 +11,4 @@ build:
 	cd symfony-db/7.1-fpm   && docker-compose build
 
 test:
-	@$(foreach dir, $(TESTS), cd tests/$(dir) && make test && make clean;)
+	@$(foreach dir, $(TESTS), cd tests/$(dir); make test; make clean; cd -)
