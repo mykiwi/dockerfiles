@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    nginx:
+        environment:
+            - VIRTUAL_HOST=domain.docker
+        networks:
+            - default
+            - proxy
+
+networks:
+    proxy:
+        external:
+            name: proxy

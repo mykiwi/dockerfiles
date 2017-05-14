@@ -10,3 +10,4 @@
     - docker --version
     - docker-compose --version
     - make
+    - make test
