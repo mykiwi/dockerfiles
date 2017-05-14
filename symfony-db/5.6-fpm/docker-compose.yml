@@ -34,7 +34,7 @@ services:
             - MYSQL_PASSWORD=pass
 
     pgsql:
-        image: postgres:9.6
+        image: postgres:9.6-alpine
         environment:
             - POSTGRES_USER=user
             - POSTGRES_PASSWORD=pass

@@ -1,4 +1,4 @@
-TEST_FILES = $(shell ls tests)
+TESTS = $(shell ls tests)
 
 build:
 	cd docker && docker-compose build
@@ -11,5 +11,4 @@ build:
 	cd symfony-db/7.1-fpm   && docker-compose build
 
 test:
-	@$(foreach dockerfile, $(TEST_FILES), docker build -t test -f tests/$(dockerfile) tests;)
-	-@docker rmi test
+	@$(foreach dir, $(TESTS), cd tests/$(dir) && make test && make clean;)
