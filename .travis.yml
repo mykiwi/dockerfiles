@@ -25,10 +25,12 @@
               ( echo -e "\\e[41mKO\\e[0m $title\\n" && exit 1 )
       }
       export -f tfold
+    - |
       run_builds () {
           set -e
           echo "$IMAGES" | parallel --gnu -j10% "tfold {} 'cd {} && docker-compose build'"
       }
+    - |
       run_tests () {
           set -e
           echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd tests/{} && make test; make clean'"
