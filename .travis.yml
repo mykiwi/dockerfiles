@@ -2,8 +2,13 @@
   sudo: required
   notifications:
     email: true
+  addons:
+    apt_packages:
+      - parallel
   services:
     - docker
+  before_install:
+    - IMAGES=$(find . -mindepth 3 -type f -name docker-compose.yml ! -path "./tests/*" -printf '%h\n' | sort)
   install:
     - sudo pip install docker-compose
     - |
@@ -20,14 +25,16 @@
               ( echo -e "\\e[41mKO\\e[0m $title\\n" && exit 1 )
       }
       export -f tfold
-    - |
+      run_builds () {
+          set -e
+          echo "$IMAGES" | parallel --gnu -j10% "tfold {} 'cd {} && docker-compose build'"
+      }
       run_tests () {
           set -e
-          echo "$COMPONENTS" | parallel --gnu "tfold {} $PHPUNIT_X {}"
-          tfold tty-group $PHPUNIT --group tty
+          echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd tests/{} && make test; make clean'"
       }
   script:
     - docker --version
     - docker-compose --version
-    - tfold docker "cd docker && docker-compose build"
-    - tfold devbox "cd devbox && docker-compose build"
+    - {run_builds}
+    - {run_tests}
