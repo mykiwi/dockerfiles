@@ -38,5 +38,5 @@
   script:
     - docker --version
     - docker-compose --version
-    - {run_builds}
-    - {run_tests}
+    - (run_builds)
+    - (run_tests)
