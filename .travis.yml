@@ -29,4 +29,5 @@
   script:
     - docker --version
     - docker-compose --version
-    - tfold test "cd docker && docker-compose build"
+    - tfold docker "cd docker && docker-compose build"
+    - tfold devbox "cd devbox && docker-compose build"
