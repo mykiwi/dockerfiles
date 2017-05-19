@@ -33,7 +33,7 @@
     - |
       run_tests () {
           set -e
-          echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd tests/{} && make test; make clean'"
+          echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd ./tests/{} && make test; make clean'"
       }
   script:
     - docker --version
