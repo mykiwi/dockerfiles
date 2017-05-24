@@ -33,7 +33,7 @@
     - |
       run_tests () {
           set -e
-          echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'if [ -d ./tests/{} ]; then cd ./tests/{} && make test; else echo 'no tests' fi'"
+          echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd ./tests/{} && make test'"
       }
   script:
     - docker --version
