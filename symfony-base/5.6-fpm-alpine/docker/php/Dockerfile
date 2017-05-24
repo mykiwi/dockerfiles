@@ -1,28 +1,29 @@
-FROM php:7.1-fpm
+FROM php:5.6-fpm-alpine
 
-ENV APCU_VERSION 5.1.8
+ENV APCU_VERSION 4.0.11
 
-RUN apt-get update && \
+RUN apk add --update --no-cache \
+        icu-libs && \
 
-    apt-get install -y --no-install-recommends \
-        sudo \
-        libicu-dev && \
+    apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        icu-dev && \
 
     docker-php-ext-install \
-        mbstring \
-        intl \
-        opcache && \
+        intl && \
 
-    pecl install apcu-$APCU_VERSION && \
+    pecl install apcu-${APCU_VERSION} && \
     docker-php-ext-enable apcu && \
 
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    docker-php-ext-enable opcache && \
 
     echo "short_open_tag = off" >> /usr/local/etc/php/php.ini && \
     echo "date.timezone = Europe/Paris" >> /usr/local/etc/php/conf.d/symfony.ini && \
     echo "opcache.max_accelerated_files = 20000" >> /usr/local/etc/php/conf.d/symfony.ini && \
     echo "realpath_cache_size=4096K" >> /usr/local/etc/php/conf.d/symfony.ini && \
-    echo "realpath_cache_ttl=600" >> /usr/local/etc/php/conf.d/symfony.ini
+    echo "realpath_cache_ttl=600" >> /usr/local/etc/php/conf.d/symfony.ini && \
+
+    apk del .build-deps
 
 ADD ./bin/* /usr/local/bin/
 

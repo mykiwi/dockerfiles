@@ -1,18 +1,12 @@
-version: '2'
+version: '3'
 
 services:
-    symfony:
+    app:
         build: docker/php
-        image: mykiwi/symfony-base:7.1-fpm
+        image: mykiwi/symfony-base:7.1-fpm-alpine
         working_dir: /srv
         volumes:
             - .:/srv
-            - /srv/var/cache
-            - /srv/var/logs
-            - /srv/var/sessions
-        command: php bin/console server:run 0.0.0.0:80
-        environment:
-            - VIRTUAL_HOST=domain.docker
-            - SYMFONY_ENV=dev
+        command: ./bin/console server:run 0.0.0.0:8000
         expose:
-            - "80"
+            - "8000"

@@ -1,4 +1,4 @@
-FROM mykiwi/symfony-base:7.0-fpm
+FROM mykiwi/symfony-base:5.6-fpm-alpine
 
 RUN install-composer.sh && \
 

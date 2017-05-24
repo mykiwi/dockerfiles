@@ -1,8 +1,6 @@
 FROM mykiwi/symfony-base:7.1-fpm
 
-RUN docker-php-ext-install zip && \
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php composer-setup.php --install-dir=/usr/local/bin --filename=composer --quiet && \
+RUN install-composer.sh && \
 
     curl http://get.sensiolabs.org/melody.phar -o /usr/local/bin/melody && \
     chmod a+x /usr/local/bin/melody && \
