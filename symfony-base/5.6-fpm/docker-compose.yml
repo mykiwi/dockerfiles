@@ -7,11 +7,6 @@ services:
         working_dir: /srv
         volumes:
             - .:/srv
-            - /srv/var/cache
-            - /srv/var/logs
-            - /srv/var/sessions
-        command: php bin/console server:run 0.0.0.0:80
-        environment:
-            - SYMFONY_ENV=dev
+        command: ./bin/console server:run 0.0.0.0:8000
         expose:
-            - "80"
+            - "8000"

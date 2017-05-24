@@ -4,9 +4,15 @@ services:
     app:
         environment:
             - VIRTUAL_HOST=domain.docker
+            - VIRTUAL_PORT=8000
+            - SYMFONY_ENV=dev
         networks:
             - default
             - proxy
+        #volumes:
+        #    - /srv/var/cache
+        #    - /srv/var/logs
+        #    - /srv/var/sessions
 
 networks:
     proxy:
