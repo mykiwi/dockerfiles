@@ -1,6 +1,7 @@
 test:
-	docker build -t test . > log && basename $PWD | sed -En "s/__/:/p" | sed -En "s/(.*)/tests mykiwi\/\1 OK/p" || (cat log && false)
+	docker-compose up --build
+	rm file-with-good-permission
 
 clean:
+	docker-compose rm --force
 	docker rmi test
-	rm -f log

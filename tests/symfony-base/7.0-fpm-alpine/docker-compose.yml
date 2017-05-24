@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+    app:
+        build: .
+        image: test
+        working_dir: /srv
+        volumes:
+            - .:/srv
+        command: touch file-with-good-permission

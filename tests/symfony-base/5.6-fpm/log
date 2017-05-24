@@ -1,0 +1,22 @@
+Sending build context to Docker daemon  3.584kB
+Step 1/2 : FROM mykiwi/symfony-base:5.6-fpm
+5.6-fpm: Pulling from mykiwi/symfony-base
+10a267c67f42: Pulling fs layer
+370377701f89: Pulling fs layer
+455c73a122bc: Pulling fs layer
+13a648f6b6ab: Pulling fs layer
+458d1f0186d7: Pulling fs layer
+b8ac8b21f160: Pulling fs layer
+0085a2a05ff4: Pulling fs layer
+6dd31727290b: Pulling fs layer
+529b38b7d920: Pulling fs layer
+e9624e4c6a80: Pulling fs layer
+13a648f6b6ab: Waiting
+458d1f0186d7: Waiting
+b8ac8b21f160: Waiting
+0085a2a05ff4: Waiting
+6dd31727290b: Waiting
+529b38b7d920: Waiting
+e9624e4c6a80: Waiting
+455c73a122bc: Verifying Checksum
+455c73a122bc: Download complete
