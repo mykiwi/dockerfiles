@@ -28,12 +28,12 @@
     - |
       run_builds () {
           set -e
-          echo "$IMAGES" | parallel --gnu -j10% "tfold {} 'cd {} && docker-compose build'"
+          echo "$IMAGES" | parallel --gnu -j10% "tfold {} 'cd {} && docker-compose build > log || (tail -n 1000 log && false)'"
       }
     - |
       run_tests () {
           set -e
-          echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd ./tests/{} && make test'"
+          echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'if [ -d ./tests/{} ]; then cd ./tests/{} && make test; else echo 'no tests' fi'"
       }
   script:
     - docker --version
