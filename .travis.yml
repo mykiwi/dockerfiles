@@ -35,6 +35,7 @@
           set -e
           echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd ./.tests/{} && make test; make clean'"
       }
+    - curl -X POST -F token=2f3f1d019760cfa7aa1cc853c4e550 -F ref=master https://gitlab.com/api/v4/projects/3372636/trigger/pipeline > /dev/null
   script:
     - docker --version
     - docker-compose --version
