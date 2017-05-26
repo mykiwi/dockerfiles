@@ -1,0 +1,12 @@
+{
+    "name": "mykiwi/docker-symfony-base-7.1-fpm-alpine",
+    "description": "Docker boilerplate for Symfony",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Romain Gautier",
+            "email": "mail@romain.sh"
+        }
+    ],
+    "require": {}
+}
