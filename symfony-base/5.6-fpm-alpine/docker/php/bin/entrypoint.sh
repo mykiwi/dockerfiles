@@ -11,8 +11,11 @@ user=$(grep ":x:$uid:" /etc/passwd | cut -d: -f1)
 home=$(grep ":x:$uid:" /etc/passwd | cut -d: -f6)
 export HOME=$home
 
+sed -i "s/user = www-data/user = $user/g" /usr/local/etc/php-fpm.d/www.conf
+sed -i "s/group = www-data/group = $group/g" /usr/local/etc/php-fpm.d/www.conf
+
 if [ $# -eq 0 ]; then
-    exec gosu $user php-fpm
+    php-fpm
 else
     exec gosu $user "$@"
 fi
