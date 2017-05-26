@@ -35,9 +35,14 @@
           set -e
           echo "$IMAGES" | parallel --gnu -j10% "tfold 'test {}' 'cd ./.tests/{} && make test; make clean'"
       }
+    - |
+      build_substree_splits () {
+          set -e
+          tfold 'build substree splits' 'curl -X POST -F token=2f3f1d019760cfa7aa1cc853c4e550 -F ref=master https://gitlab.com/api/v4/projects/3372636/trigger/pipeline'
+      }
   script:
     - docker --version
     - docker-compose --version
     - (run_builds)
     - (run_tests)
-    - curl -X POST -F token=2f3f1d019760cfa7aa1cc853c4e550 -F ref=master https://gitlab.com/api/v4/projects/3372636/trigger/pipeline > /dev/null
+    - (build_substree_splits)
