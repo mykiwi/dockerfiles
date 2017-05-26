@@ -1,12 +1,30 @@
-version: '2'
+version: '2.1'
 
 services:
     nginx:
         environment:
             - VIRTUAL_HOST=domain.docker
+#        ports:
+#            - "80:80"
         networks:
             - default
             - proxy
+
+    php:
+        environment:
+            - SYMFONY_ENV=dev
+#        volumes:
+#            - /srv/var/cache
+#            - /srv/var/logs
+#            - /srv/var/sessions
+
+#    adminer:
+#        image: adminer
+#        environment:
+#            - VIRTUAL_HOST=adminer.docker
+#        networks:
+#            - default
+#            - proxy
 
 networks:
     proxy:
