@@ -4,11 +4,11 @@ services:
     nginx:
         environment:
             - VIRTUAL_HOST=domain.docker
-#        ports:
-#            - "80:80"
         networks:
             - default
             - proxy
+#        ports:
+#            - "80:80"
 
     php:
         environment:
@@ -25,6 +25,8 @@ services:
 #        networks:
 #            - default
 #            - proxy
+##        ports:
+##            - "81:80"
 
 networks:
     proxy:

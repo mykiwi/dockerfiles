@@ -2,12 +2,8 @@ version: '2.1'
 
 services:
     app:
-        expose:
-            - "8000"
         environment:
-            - SYMFONY_ENV=dev
             - VIRTUAL_HOST=domain.docker
-            - VIRTUAL_PORT=8000
         networks:
             - default
             - proxy
@@ -16,7 +12,7 @@ services:
 #            - /srv/var/logs
 #            - /srv/var/sessions
 #        ports:
-#            - "80:8000"
+#            - "80:80"
 
 networks:
     proxy:

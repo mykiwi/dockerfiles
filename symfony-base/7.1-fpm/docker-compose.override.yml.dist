@@ -8,8 +8,6 @@ services:
             - SYMFONY_ENV=dev
             - VIRTUAL_HOST=domain.docker
             - VIRTUAL_PORT=8000
-#        ports:
-#            - "80:8000"
         networks:
             - default
             - proxy
@@ -17,6 +15,8 @@ services:
 #            - /srv/var/cache
 #            - /srv/var/logs
 #            - /srv/var/sessions
+#        ports:
+#            - "80:8000"
 
 networks:
     proxy:
