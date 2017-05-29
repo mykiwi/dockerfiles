@@ -1,5 +1,5 @@
 {
-    "name": "mykiwi/docker-symfony-db-7.0-apache",
+    "name": "mykiwi/docker-symfony-php70-apache-db",
     "description": "Docker boilerplate for Symfony",
     "license": "MIT",
     "authors": [

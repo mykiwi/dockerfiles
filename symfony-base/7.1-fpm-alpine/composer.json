@@ -1,5 +1,5 @@
 {
-    "name": "mykiwi/docker-symfony-base-7.1-fpm-alpine",
+    "name": "mykiwi/docker-symfony-php71-fpm-alpine",
     "description": "Docker boilerplate for Symfony",
     "license": "MIT",
     "authors": [

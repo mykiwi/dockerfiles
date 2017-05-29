@@ -1,5 +1,5 @@
 {
-    "name": "mykiwi/docker-symfony-base-5.6-apache",
+    "name": "mykiwi/docker-symfony-php56-apache",
     "description": "Docker boilerplate for Symfony",
     "license": "MIT",
     "authors": [
