@@ -7,6 +7,10 @@
       - parallel
   services:
     - docker
+  branches:
+    only:
+      - master
+      - ci
   before_install:
     - IMAGES=$(find . -type f -name docker-compose.yml ! -path "./.tests/*" -printf '%h\n' | sort)
   install:
@@ -38,11 +42,9 @@
     - |
       build_substree_splits () {
           set -e
-          tfold 'build substree splits' 'curl -X POST -F token=2f3f1d019760cfa7aa1cc853c4e550 -F ref=master https://gitlab.com/api/v4/projects/3372636/trigger/pipeline'
+          tfold 'build substree splits' 'docker run --rm -ti -e GH_TOKEN -v $PWD:/srv jderusse/gitsplit'
       }
   script:
     - docker --version
     - docker-compose --version
-    - (run_builds)
-    - (run_tests)
     - (build_substree_splits)
