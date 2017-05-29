@@ -1,0 +1,24 @@
+version: '2.1'
+
+services:
+    nginx:
+        environment:
+            - VIRTUAL_HOST=domain.docker
+        networks:
+            - default
+            - proxy
+#        ports:
+#            - "80:80"
+
+    php:
+        environment:
+            - SYMFONY_ENV=dev
+#        volumes:
+#            - /srv/var/cache
+#            - /srv/var/logs
+#            - /srv/var/sessions
+
+networks:
+    proxy:
+        external:
+            name: proxy
