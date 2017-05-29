@@ -1,5 +1,5 @@
 {
-    "name": "mykiwi/docker-symfony-php71-fpm",
+    "name": "mykiwi/docker-symfony-php71-nginx",
     "description": "Docker boilerplate for Symfony",
     "license": "MIT",
     "authors": [
