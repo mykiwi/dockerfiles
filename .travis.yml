@@ -42,7 +42,7 @@
     - |
       build_substree_splits () {
           set -e
-          tfold 'build substree splits' 'docker run --rm -ti -e GH_TOKEN -v $PWD:/srv jderusse/gitsplit'
+          tfold 'build substree splits' 'git config remote.origin.fetch "+refs/*:refs/*" && git config remote.origin.mirror true && git fetch --unshallow && docker run --rm -ti -e GH_TOKEN -v $PWD:/srv jderusse/gitsplit'
       }
   script:
     - docker --version
