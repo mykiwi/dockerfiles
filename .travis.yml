@@ -10,7 +10,6 @@
   branches:
     only:
       - master
-      - ci
   before_install:
     - IMAGES=$(find . -type f -name docker-compose.yml ! -path "./.tests/*" -printf '%h\n' | sort)
   install:
@@ -47,4 +46,6 @@
   script:
     - docker --version
     - docker-compose --version
+    - (run_builds)
+    - (run_tests)
     - (build_substree_splits)
