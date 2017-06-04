@@ -6,9 +6,9 @@ DC = docker-compose
 help:
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-start:
+start:          ## Install and start the project
 	$(DC) up --build -d
 
-stop:
+stop:           ## Remove docker containers
 	$(DC) kill
 	$(DC) rm --force -v
