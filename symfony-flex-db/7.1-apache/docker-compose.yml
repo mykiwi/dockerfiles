@@ -1,0 +1,49 @@
+version: '2.1'
+
+services:
+    app:
+        build: docker/php
+        image: mykiwi/symfony-db:7.1-apache
+        working_dir: /srv
+        volumes:
+            - .:/srv
+        env_file:
+            - .env
+        depends_on:
+            mariadb:
+                condition: 'service_healthy'
+            mysql:
+                condition: 'service_healthy'
+            pgsql:
+                condition: 'service_healthy'
+
+    mariadb:
+        image: mariadb:10.1
+        environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD=true
+        healthcheck:
+            test: mysql --user=root --password='' --execute "show databases"
+            interval: 1s
+            timeout:  1s
+            retries:  20
+
+    mysql:
+        image: mysql:5.7
+        environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        healthcheck:
+            test: mysql --user=root --password='' --execute "show databases"
+            interval: 1s
+            timeout:  1s
+            retries:  20
+
+    pgsql:
+        image: postgres:9.6-alpine
+        environment:
+            - POSTGRES_USER=user
+            - POSTGRES_PASSWORD=pass
+        healthcheck:
+            test: psql postgresql://user:pass@localhost --list
+            interval: 1s
+            timeout:  1s
+            retries:  20

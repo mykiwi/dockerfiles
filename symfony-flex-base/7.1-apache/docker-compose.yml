@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+    app:
+        build: docker/php
+        image: mykiwi/symfony-base:7.1-apache
+        working_dir: /srv
+        volumes:
+            - ./docker/apache/vhost.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+            - .:/srv
+        env_file:
+			- .env

@@ -1,0 +1,30 @@
+version: '2.1'
+
+services:
+    app:
+        environment:
+            - VIRTUAL_HOST=domain.docker
+        networks:
+            - default
+            - proxy
+#        volumes:
+#            - /srv/var/cache
+#            - /srv/var/logs
+#            - /srv/var/sessions
+#        ports:
+#            - "80:80"
+
+#    adminer:
+#        image: adminer
+#        environment:
+#            - VIRTUAL_HOST=adminer.docker
+#        networks:
+#            - default
+#            - proxy
+##        ports:
+##            - "81:80"
+
+networks:
+    proxy:
+        external:
+            name: proxy
