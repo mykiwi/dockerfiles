@@ -9,4 +9,4 @@ services:
             - ./docker/apache/vhost.conf:/etc/apache2/sites-enabled/000-default.conf:ro
             - .:/srv
         env_file:
-			- .env
+            - .env
