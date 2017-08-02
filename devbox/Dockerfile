@@ -76,7 +76,9 @@ RUN curl -o /usr/local/bin/symfony -LsS https://symfony.com/installer           
     rm -rf /etc/php/conf.d                                                                                       && \
     ln -s /home/mykiwi/.php/ini /etc/php/conf.d                                                                  && \
     sudo -u mykiwi sh -c '                                                                                          \
-        composer global require hirak/prestissimo                                                                && \
+        composer global require --optimize-autoloader                                                               \
+            hirak/prestissimo                                                                                       \
+            pyrech/composer-changelogs                                                                           && \
         cd /home/mykiwi/.php                                                                                     && \
         composer require symfony/var-dumper                                                                      && \
         composer dump-autoload --optimize --no-dev --classmap-authoritative                                      && \
