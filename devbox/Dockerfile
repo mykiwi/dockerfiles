@@ -27,6 +27,7 @@ RUN pacman -Syy --noconfirm --noprogressbar --needed                            
         vim                                                                                                         \
         docker                                                                                                      \
         docker-compose                                                                                              \
+        docker-machine                                                                                              \
         go                                                                                                          \
         php                                                                                                         \
         php-intl                                                                                                    \
