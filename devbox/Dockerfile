@@ -1,7 +1,7 @@
 FROM archlinux/base
 MAINTAINER r. gautier <mail@romain.sh>
 
-RUN printf "\n[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch\n" >> /etc/pacman.conf && \
+RUN printf "\n[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch\n" >> /etc/pacman.conf   && \
     sed -i.bak "s/SigLevel    = Required DatabaseOptional/SigLevel = Never/g" /etc/pacman.conf
 
 RUN pacman -Syy --noconfirm --noprogressbar --needed                                                                \
