@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  phaudit:
+    image: mykiwi/phaudit:7.0
+    build: .

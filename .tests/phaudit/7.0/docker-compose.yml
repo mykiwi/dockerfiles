@@ -1,0 +1,5 @@
+version: '2'
+
+services:
+    phaudi:
+        image: mykiwi/phaudit:7.0

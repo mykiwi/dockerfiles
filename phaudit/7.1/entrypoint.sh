@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+uid=$(stat -c %u /project)
+gid=$(stat -c %g /project)
+
+addgroup -g $gid group > /dev/null 2>&1 || true
+group=$(grep ":$gid:" /etc/group | cut -d: -f1)
+
+adduser -D -s /bin/sh -u $uid -G $group user > /dev/null 2>&1 || true
+user=$(grep ":x:$uid:" /etc/passwd | cut -d: -f1)
+
+if [ $# -eq 0 ]; then
+    echo "Usage:
+  phploc ...
+  pdepend ...
+  phpmd ...
+  phpcs ...
+  phpcbf ...
+  phpcpd ...
+  phpdcd ...
+  phpmetrics  ...
+  php-cs-fixer ..."
+else
+    exec su-exec $user "$@"
+fi
