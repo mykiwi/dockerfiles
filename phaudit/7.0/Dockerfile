@@ -30,7 +30,7 @@ RUN apk add --update --no-cache \
  && chmod +x php-cs-fixer.phar \
  && mv php-cs-fixer.phar /usr/local/bin/php-cs-fixer
 
-FROM php:7.1-fpm-alpine
+FROM php:7.0-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
 
 RUN apk add --update --no-cache \
