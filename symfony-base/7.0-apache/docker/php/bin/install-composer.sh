@@ -7,7 +7,8 @@ apt-get install -y --no-install-recommends \
     git \
     unzip \
     zlib1g-dev \
-    ca-certificates
+    ca-certificates \
+    openssh-client
 apt-get autoremove
 
 docker-php-ext-install zip
