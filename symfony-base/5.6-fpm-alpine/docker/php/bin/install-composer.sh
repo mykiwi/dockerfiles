@@ -6,7 +6,8 @@ apk add --no-cache --update \
     git \
     unzip \
     zlib-dev \
-    ca-certificates
+    ca-certificates \
+    openssh-client
 
 docker-php-ext-install zip
 
