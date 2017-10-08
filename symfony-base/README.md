@@ -1,31 +1,45 @@
-# Install gd
+# Supported tags and respective `Dockerfile` links
 
-#### debian version
+-	[`7.1-fpm-alpine`, `latest` (*7.1-fpm-alpine/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.1-fpm-alpine/docker/php/Dockerfile)
+-	[`7.1-fpm` (*7.1-fpm/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.1-fpm/docker/php/Dockerfile)
+-	[`7.1-apache` (*7.1-apache/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.1-apache/docker/php/Dockerfile)
+-	[`7.0-fpm-alpine` (*7.0-fpm-alpine/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.0-fpm-alpine/docker/php/Dockerfile)
+-	[`7.0-fpm` (*7.0-fpm/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.0-fpm/docker/php/Dockerfile)
+-	[`7.0-apache` (*7.0-apache/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.0-apache/docker/php/Dockerfile)
+-	[`5.6-fpm-alpine` (*5.6-fpm-alpine/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/5.6-fpm-alpine/docker/php/Dockerfile)
+-	[`5.6-fpm` (*5.6-fpm/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/5.6-fpm/docker/php/Dockerfile)
+-	[`5.6-apache` (*5.6-apache/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/5.6-apache/docker/php/Dockerfile)
 
-```
-apt-get install -y \
-    libjpeg-dev \
-    libpng12-dev \
-    libfreetype6-dev && \
+# How to use this image.
 
-docker-php-ext-configure gd \
-    --enable-gd-native-ttf \
-    --with-jpeg-dir=/usr/lib/x86_64-linux-gnu \
-    --with-png-dir=/usr/lib/x86_64-linux-gnu \
-    --with-freetype-dir=/usr/lib/x86_64-linux-gnu && \
-
-docker-php-ext-install gd
-```
-
-#### alpine version:
+## From CLI
 
 ```
-RUN apk add --update --no-cache \
-        icu-libs \
-        libjpeg \
-        libpng \
-        freetype-dev && \
-
+docker run -d \
+	--volume /your/code:/srv \
+	--workdir /srv \
+	mykiwi/symfony-base ...
 ```
 
-- used by the [Image constraint](http://symfony.com/doc/current/reference/constraints/Image.html#detectcorrupted)
+## From docker-compose
+
+```
+php:
+    image: mykiwi/symfony-base
+    working_dir: /srv
+    volumes:
+        - .:/srv
+```
+
+For more details, see [sources](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/).
+
+---
+
+# Symfony's optional dependences:
+
+- [gd](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/optional-deps.md#install-gd)
+
+---
+
+[![Build](https://travis-ci.org/mykiwi/dockerfiles.svg?branch=master)](https://travis-ci.org/mykiwi/dockerfiles)  
+[![Analytics](https://ga-beacon.appspot.com/UA-91799310-1/github/mykiwi/dockerfiles)](https://github.com/igrigorik/ga-beacon)
