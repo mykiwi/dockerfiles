@@ -1,17 +1,9 @@
 #!/bin/sh
 set -e
 
-uid=$(stat -c %u /project)
-gid=$(stat -c %g /project)
-
-addgroup -g $gid group > /dev/null 2>&1 || true
-group=$(grep ":$gid:" /etc/group | cut -d: -f1)
-
-adduser -D -s /bin/sh -u $uid -G $group user > /dev/null 2>&1 || true
-user=$(grep ":x:$uid:" /etc/passwd | cut -d: -f1)
-
-if [ $# -eq 0 ]; then
-    echo "Usage:
+usage()
+{
+  echo "Usage:
   phploc ...
   pdepend ...
   phpmd ...
@@ -21,6 +13,27 @@ if [ $# -eq 0 ]; then
   phpdcd ...
   phpmetrics  ...
   php-cs-fixer ..."
+
+  exit
+}
+
+uid=$(stat -c %u /project)
+gid=$(stat -c %g /project)
+
+if [ $uid == 0 ] && [ $gid == 0 ]; then
+  if [ $# -eq 0 ]; then
+    usage
+  else
+    exec "$@"
+  fi
+fi
+
+sed -i -r "s/foo:x:\d+:\d+:/foo:x:$uid:$gid:/g" /etc/passwd
+sed -i -r "s/bar:x:\d+:/bar:x:$gid:/g" /etc/group
+
+if [ $# -eq 0 ]; then
+  usage
 else
-    exec su-exec $user "$@"
+  user=$(grep ":x:$uid:" /etc/passwd | cut -d: -f1)
+  exec su-exec $user "$@"
 fi
