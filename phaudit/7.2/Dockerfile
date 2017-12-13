@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine as bin
+FROM php:7.2-fpm-alpine as bin
 
 RUN apk add --no-cache \
         wget && \
@@ -40,7 +40,7 @@ RUN composer global require \
         phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules
 
-FROM php:7.1-fpm-alpine
+FROM php:7.2-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
 COPY --from=src /tmp /usr/local/src/
 ENV PATH /usr/local/src/vendor/bin:$PATH

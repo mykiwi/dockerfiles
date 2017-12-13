@@ -30,8 +30,20 @@ RUN apk add --no-cache \
     chmod +x php-cs-fixer.phar && \
     mv php-cs-fixer.phar /usr/local/bin/php-cs-fixer
 
+FROM composer as src
+
+RUN composer global require \
+        phpstan/phpstan \
+        phpstan/phpstan-dibi \
+        phpstan/phpstan-doctrine \
+        phpstan/phpstan-phpunit \
+        phpstan/phpstan-shim \
+        phpstan/phpstan-strict-rules
+
 FROM php:7.0-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
+COPY --from=src /tmp /usr/local/src/
+ENV PATH /usr/local/src/vendor/bin:$PATH
 
 RUN apk add --no-cache \
         graphviz \

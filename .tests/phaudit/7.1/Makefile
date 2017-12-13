@@ -8,5 +8,6 @@ test:
 	docker-compose run --rm phaudi phpdcd --version
 	docker-compose run --rm phaudi phpmetrics --version
 	docker-compose run --rm phaudi php-cs-fixer --version
+	docker-compose run --rm phaudi phpstan.php --version
 
 clean:
