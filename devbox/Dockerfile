@@ -1,5 +1,4 @@
 FROM archlinux/base
-MAINTAINER r. gautier <mail@romain.sh>
 
 RUN printf "\n[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch\n" >> /etc/pacman.conf   && \
     sed -i.bak "s/SigLevel    = Required DatabaseOptional/SigLevel = Never/g" /etc/pacman.conf
@@ -32,7 +31,6 @@ RUN pacman -Syy --noconfirm --noprogressbar --needed                            
         php                                                                                                         \
         php-intl                                                                                                    \
         php-gd                                                                                                      \
-        php-mcrypt                                                                                                  \
         php-sqlite                                                                                                  \
         composer                                                                                                    \
         python                                                                                                      \
@@ -66,12 +64,10 @@ RUN sudo -u mykiwi sh -c '                                                      
     '
 
 # PHP
-ENV PHPCSFIXER_VERSION v2.1.0
-RUN curl -o /usr/local/bin/symfony -LsS https://symfony.com/installer                                            && \
-    curl -o /usr/local/bin/melody       http://get.sensiolabs.org/melody.phar                                    && \
-    curl -o /usr/local/bin/phpunit -LsS https://phar.phpunit.de/phpunit.phar                                     && \
-    curl -o /usr/local/bin/php-cs-fixer -LsS                                                                        \
-        https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/$PHPCSFIXER_VERSION/php-cs-fixer.phar     && \
+ENV PHPCSFIXER_VERSION v2.9.0
+RUN curl -o /usr/local/bin/melody       -LsS http://get.sensiolabs.org/melody.phar                               && \
+    curl -o /usr/local/bin/phpunit      -LsS https://phar.phpunit.de/phpunit.phar                                && \
+    curl -o /usr/local/bin/php-cs-fixer -LsS http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar              && \
     chmod a+x /usr/local/bin/*                                                                                   && \
     rm -rf /etc/php/conf.d                                                                                       && \
     ln -s /home/mykiwi/.php/ini /etc/php/conf.d                                                                  && \
@@ -92,5 +88,5 @@ RUN mkdir /var/run/sshd                                                         
     echo "Port 20000" >> /etc/ssh/sshd_config
 EXPOSE 20000
 
-ADD ./bin/init /init
-CMD ["/init"]
+ADD ./entrypoint.sh /entrypoint
+ENTRYPOINT ["/entrypoint"]
