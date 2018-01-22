@@ -1,6 +1,9 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`7.1-fpm-alpine`, `latest` (*7.1-fpm-alpine/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.1-fpm-alpine/docker/php/Dockerfile)
+-	[`7.2-fpm-alpine`, `latest` (*7.2-fpm-alpine/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.2-fpm-alpine/docker/php/Dockerfile)
+-	[`7.2-fpm` (*7.2-fpm/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.2-fpm/docker/php/Dockerfile)
+-	[`7.2-apache` (*7.2-apache/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.2-apache/docker/php/Dockerfile)
+-	[`7.1-fpm-alpine` (*7.1-fpm-alpine/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.1-fpm-alpine/docker/php/Dockerfile)
 -	[`7.1-fpm` (*7.1-fpm/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.1-fpm/docker/php/Dockerfile)
 -	[`7.1-apache` (*7.1-apache/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.1-apache/docker/php/Dockerfile)
 -	[`7.0-fpm-alpine` (*7.0-fpm-alpine/docker/php/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/symfony-base/7.0-fpm-alpine/docker/php/Dockerfile)

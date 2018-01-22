@@ -1,20 +1,23 @@
-version: '2.1'
+version: '2'
 
 services:
-    app:
-        environment:
-            - VIRTUAL_HOST=domain.docker
-        networks:
-            - default
-            - proxy
-#        volumes:
-#            - /srv/var/cache
-#            - /srv/var/logs
-#            - /srv/var/sessions
-#        ports:
-#            - "80:80"
+  app:
+    volumes:
+      - ~/.cache/composer:/home/.composer/cache
 
-networks:
-    proxy:
-        external:
-            name: proxy
+#    labels:
+#      traefik.frontend.rule: "Host:app.docker"
+
+#    ports:
+#      - "80:80"
+
+#    environment:
+#      - VIRTUAL_HOST=app.docker
+#    networks:
+#      - default
+#      - proxy
+
+#networks:
+#  proxy:
+#    external:
+#      name: proxy

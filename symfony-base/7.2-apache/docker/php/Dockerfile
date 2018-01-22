@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.2-apache
 
 ENTRYPOINT ["entrypoint"]
 
@@ -33,6 +33,7 @@ RUN apt-get update && \
     chmod +x /bin/gosu && \
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php --install-dir=/usr/local/bin --filename=composer && rm composer-setup.php && \
     chmod +x /usr/local/bin/composer && \
+    a2enmod rewrite && \
     addgroup bar && \
     adduser --home=/home --shell=/bin/bash --ingroup=bar --disabled-password --quiet foo && \
     composer global require symfony/flex && chown -R foo:bar /home/.composer

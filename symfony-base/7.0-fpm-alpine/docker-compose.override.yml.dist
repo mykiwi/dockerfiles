@@ -1,24 +1,27 @@
-version: '2.1'
+version: '2'
 
 services:
-    nginx:
-        environment:
-            - VIRTUAL_HOST=domain.docker
-        networks:
-            - default
-            - proxy
-#        ports:
-#            - "80:80"
+  http:
+#    labels:
+#      traefik.frontend.rule: "Host:app.docker"
 
-    php:
-        environment:
-            - SYMFONY_ENV=dev
-#        volumes:
-#            - /srv/var/cache
-#            - /srv/var/logs
-#            - /srv/var/sessions
+#    ports:
+#      - "80:80"
 
-networks:
-    proxy:
-        external:
-            name: proxy
+#    environment:
+#      - VIRTUAL_HOST=app.docker
+#    networks:
+#      - default
+#      - proxy
+
+  php:
+    volumes:
+      - ~/.cache/composer:/home/.composer/cache
+
+#    labels:
+#      traefik.enable: "false"
+
+#networks:
+#  proxy:
+#    external:
+#      name: proxy
