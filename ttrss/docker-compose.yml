@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  app:
+    image: mykiwi/ttrss
+    build: .
+
+  database:
+    image: postgres:10-alpine
+    environment:
+      - POSTGRES_USER=ttrss
+      - POSTGRES_PASSWORD=ttrss
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database: ~
