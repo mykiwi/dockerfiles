@@ -1,4 +1,8 @@
 #!/bin/bash
 
-/usr/bin/ssh-keygen -A
-/usr/sbin/sshd -D
+if [ $# -eq 0 ]; then
+    /usr/bin/ssh-keygen -A
+    /usr/sbin/sshd -D
+else
+    exec "$@"
+fi

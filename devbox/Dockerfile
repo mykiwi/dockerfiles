@@ -64,7 +64,6 @@ RUN sudo -u mykiwi sh -c '                                                      
     '
 
 # PHP
-ENV PHPCSFIXER_VERSION v2.9.0
 RUN curl -o /usr/local/bin/melody       -LsS http://get.sensiolabs.org/melody.phar                               && \
     curl -o /usr/local/bin/phpunit      -LsS https://phar.phpunit.de/phpunit.phar                                && \
     curl -o /usr/local/bin/php-cs-fixer -LsS http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar              && \
@@ -73,14 +72,16 @@ RUN curl -o /usr/local/bin/melody       -LsS http://get.sensiolabs.org/melody.ph
     ln -s /home/mykiwi/.php/ini /etc/php/conf.d                                                                  && \
     sudo -u mykiwi sh -c '                                                                                          \
         composer global require --optimize-autoloader                                                               \
-            hirak/prestissimo                                                                                       \
+            symfony/flex                                                                                            \
             pyrech/composer-changelogs                                                                           && \
         cd /home/mykiwi/.php                                                                                     && \
+        composer init --no-interaction                                                                           && \
         composer require symfony/var-dumper                                                                      && \
         composer dump-autoload --optimize --no-dev --classmap-authoritative                                      && \
-        echo "zend_extension=opcache.so" > ${HOME}/.php/ini/70-opcache.ini                                       && \
-        echo "extension=blackfire.so" > ${HOME}/.php/ini/90-blackfire.ini                                        && \
-        echo "auto_prepend_file = ${HOME}/.php/vendor/autoload.php" > ${HOME}/.php/ini/90-symfony-dump.ini          \
+        echo "extension=iconv" > ${HOME}/.php/ini/10-extensions.ini                                              && \
+        echo "extension=blackfire.so" >> ${HOME}/.php/ini/10-extensions.ini                                      && \
+        echo "zend_extension=opcache.so" > ${HOME}/.php/ini/20-opcache.ini                                       && \
+        echo "auto_prepend_file = ${HOME}/.php/vendor/autoload.php" > ${HOME}/.php/ini/30-symfony-dump.ini          \
     '
 
 RUN mkdir /var/run/sshd                                                                                          && \
