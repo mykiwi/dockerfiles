@@ -28,10 +28,15 @@ RUN pacman -Syy --noconfirm --noprogressbar --needed                            
         docker-compose                                                                                              \
         docker-machine                                                                                              \
         go                                                                                                          \
+        mongodb                                                                                                     \
+        mongodb-tools                                                                                               \
         php                                                                                                         \
         php-intl                                                                                                    \
         php-gd                                                                                                      \
         php-sqlite                                                                                                  \
+        php-pgsql                                                                                                   \
+        php-mongodb                                                                                                 \
+        php-redis                                                                                                   \
         composer                                                                                                    \
         python                                                                                                      \
         python-pip                                                                                                  \
@@ -67,6 +72,7 @@ RUN sudo -u mykiwi sh -c '                                                      
 RUN curl -o /usr/local/bin/melody       -LsS http://get.sensiolabs.org/melody.phar                               && \
     curl -o /usr/local/bin/phpunit      -LsS https://phar.phpunit.de/phpunit.phar                                && \
     curl -o /usr/local/bin/php-cs-fixer -LsS http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar              && \
+    curl -o /usr/local/bin/psysh        -LsS https://git.io/psysh                                                && \
     chmod a+x /usr/local/bin/*                                                                                   && \
     rm -rf /etc/php/conf.d                                                                                       && \
     ln -s /home/mykiwi/.php/ini /etc/php/conf.d                                                                  && \
@@ -78,8 +84,12 @@ RUN curl -o /usr/local/bin/melody       -LsS http://get.sensiolabs.org/melody.ph
         composer init --no-interaction                                                                           && \
         composer require symfony/var-dumper                                                                      && \
         composer dump-autoload --optimize --no-dev --classmap-authoritative                                      && \
-        echo "extension=iconv" > ${HOME}/.php/ini/10-extensions.ini                                              && \
-        echo "extension=blackfire.so" >> ${HOME}/.php/ini/10-extensions.ini                                      && \
+        echo "extension=iconv"               > ${HOME}/.php/ini/10-extensions.ini                                && \
+        echo "extension=blackfire.so"       >> ${HOME}/.php/ini/10-extensions.ini                                && \
+        echo "extension=pdo_mysql"          >> ${HOME}/.php/ini/10-extensions.ini                                && \
+        echo "extension=pdo_pgsql"          >> ${HOME}/.php/ini/10-extensions.ini                                && \
+        echo "extension=pdo_sqlite"         >> ${HOME}/.php/ini/10-extensions.ini                                && \
+        echo "extension=mongodb.so"         >> ${HOME}/.php/ini/10-extensions.ini                                && \
         echo "zend_extension=opcache.so" > ${HOME}/.php/ini/20-opcache.ini                                       && \
         echo "auto_prepend_file = ${HOME}/.php/vendor/autoload.php" > ${HOME}/.php/ini/30-symfony-dump.ini          \
     '
