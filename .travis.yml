@@ -11,9 +11,11 @@
     only:
       - master
   before_install:
+    - sudo apt-get update
+    - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+    - sudo pip install docker-compose
     - IMAGES=$(find . -type f -name docker-compose.yml ! -path "./.tests/*" -printf '%h\n' | sort)
   install:
-    - sudo pip install docker-compose
     - |
       # General configuration
       stty cols 120
