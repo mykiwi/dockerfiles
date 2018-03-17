@@ -16,6 +16,8 @@ A simple docker images to run some phpqatools on your php project
 * [PHP Dead Code Detector](http://github.com/sebastianbergmann/phpdcd) as `phpdcd`
 * [PhpMetrics](http://www.phpmetrics.org/) as `phpmetrics`
 * [PHP Coding Standards Fixer](http://cs.sensiolabs.org/) as `php-cs-fixer`
+* [PHP Static Analysis Tool](https://github.com/phpstan/phpstan) as `phpstan`
+* [Twig Coding Standards](https://github.com/allocine/twigcs) as `twigcs`
 
 ## Usage
 
