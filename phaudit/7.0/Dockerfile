@@ -47,6 +47,7 @@ COPY --from=src /tmp /usr/local/src/
 ENV PATH /usr/local/src/vendor/bin:$PATH
 
 RUN apk add --no-cache \
+        bash \
         graphviz \
         su-exec && \
     addgroup bar && \
