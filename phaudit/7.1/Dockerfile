@@ -38,7 +38,8 @@ RUN composer global require \
         phpstan/phpstan-doctrine \
         phpstan/phpstan-phpunit \
         phpstan/phpstan-shim \
-        phpstan/phpstan-strict-rules
+        phpstan/phpstan-strict-rules \
+        allocine/twigcs
 
 FROM php:7.1-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
