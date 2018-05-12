@@ -1,6 +1,6 @@
 FROM python:3-alpine AS src
 
-ENV VERSION 0.6.1
+ENV VERSION 0.6.4
 
 RUN apk add --update --no-cache \
       unzip \
@@ -12,4 +12,4 @@ FROM python:3-alpine
 
 COPY --from=src /srv/ /srv
 
-ENTRYPOINT ["python", "/srv/cli.py"]
+ENTRYPOINT ["python", "/srv/grammalecte-cli.py"]
