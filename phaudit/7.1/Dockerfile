@@ -26,9 +26,9 @@ RUN apk add --no-cache \
     wget https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar && \
     chmod +x phpmetrics.phar && \
     mv phpmetrics.phar /usr/local/bin/phpmetrics && \
-    wget http://get.sensiolabs.org/php-cs-fixer.phar && \
-    chmod +x php-cs-fixer.phar && \
-    mv php-cs-fixer.phar /usr/local/bin/php-cs-fixer
+    wget https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && \
+    chmod +x php-cs-fixer-v2.phar && \
+    mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer
 
 FROM composer as src
 
