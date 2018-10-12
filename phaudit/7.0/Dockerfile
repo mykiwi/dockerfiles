@@ -28,7 +28,8 @@ RUN apk add --no-cache \
     mv phpmetrics.phar /usr/local/bin/phpmetrics && \
     wget https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && \
     chmod +x php-cs-fixer-v2.phar && \
-    mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer
+    mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer && \
+    php-cs-fixer self-update
 
 FROM composer as src
 
@@ -39,7 +40,8 @@ RUN composer global require \
         phpstan/phpstan-phpunit \
         phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules \
-        allocine/twigcs
+        allocine/twigcs \
+        sensiolabs/security-checker
 
 FROM php:7.0-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
