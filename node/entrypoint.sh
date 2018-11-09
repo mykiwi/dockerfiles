@@ -12,8 +12,8 @@ if [ $uid == 0 ] && [ $gid == 0 ]; then
     fi
 fi
 
-sed -i -r "s/foo:x:\d+:\d+:/foo:x:$uid:$gid:/g" /etc/passwd
-sed -i -r "s/bar:x:\d+:/bar:x:$gid:/g" /etc/group
+sed -i -r "s/node:x:\d+:\d+:/node:x:$uid:$gid:/g" /etc/passwd
+sed -i -r "s/node:x:\d+:/node:x:$gid:/g" /etc/group
 chown $uid:$gid /home/node
 
 if [ $# -eq 0 ]; then
