@@ -1,6 +1,7 @@
 # Phaudit
 
-- [`7.2`, `latest` (*phaudit/7.2/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.2/Dockerfile)
+- [`7.3`, `latest` (*phaudit/7.3/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.3/Dockerfile)
+- [`7.2` (*phaudit/7.2/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.2/Dockerfile)
 - [`7.1` (*phaudit/7.1/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.1/Dockerfile)
 - [`7.0` (*phaudit/7.0/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.0/Dockerfile)
 
