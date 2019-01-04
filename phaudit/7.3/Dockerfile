@@ -29,7 +29,7 @@ RUN apk add --no-cache \
     wget https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && \
     chmod +x php-cs-fixer-v2.phar && \
     mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer && \
-    php-cs-fixer self-update
+    PHP_CS_FIXER_IGNORE_ENV=true php-cs-fixer self-update
 
 FROM composer as src
 
