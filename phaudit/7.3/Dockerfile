@@ -29,7 +29,7 @@ RUN apk add --no-cache \
     wget https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && \
     chmod +x php-cs-fixer-v2.phar && \
     mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer && \
-    PHP_CS_FIXER_IGNORE_ENV=true php-cs-fixer self-update
+    php-cs-fixer self-update
 
 FROM composer as src
 
@@ -41,7 +41,8 @@ RUN composer global require \
         phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules \
         allocine/twigcs \
-        sensiolabs/security-checker
+        sensiolabs/security-checker \
+        heahdude/yaml-linter
 
 FROM php:7.3-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/

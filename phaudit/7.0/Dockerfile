@@ -41,7 +41,8 @@ RUN composer global require \
         phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules \
         allocine/twigcs \
-        sensiolabs/security-checker
+        sensiolabs/security-checker \
+        heahdude/yaml-linter
 
 FROM php:7.0-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
