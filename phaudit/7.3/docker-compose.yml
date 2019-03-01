@@ -2,5 +2,5 @@ version: '3'
 
 services:
   phaudit:
-    image: mykiwi/phaudit:7.2
+    image: mykiwi/phaudit:7.3
     build: .

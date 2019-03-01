@@ -29,7 +29,10 @@ RUN apk add --no-cache \
     wget https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && \
     chmod +x php-cs-fixer-v2.phar && \
     mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer && \
-    php-cs-fixer self-update
+    php-cs-fixer self-update && \
+    wget https://github.com/wapmorgan/PhpCodeFixer/releases/download/2.0.17/phpcf-2.0.17.phar  && \
+    chmod +x phpcf-2.0.17.phar && \
+    mv phpcf-2.0.17.phar /usr/local/bin/phpcf
 
 FROM composer as src
 
@@ -42,7 +45,8 @@ RUN composer global require \
         phpstan/phpstan-strict-rules \
         allocine/twigcs \
         sensiolabs/security-checker \
-        heahdude/yaml-linter
+        heahdude/yaml-linter \
+        wapmorgan/php-code-fixer
 
 FROM php:7.3-fpm-alpine
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
