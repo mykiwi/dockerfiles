@@ -21,6 +21,7 @@ A simple docker images to run some phpqatools on your php project
 * [Security Checker](https://security.symfony.com/) as `security-checker`
 * [Twig Coding Standards](https://github.com/allocine/twigcs) as `twigcs`
 * [YAML Linter](https://github.com/HeahDude/yaml-linter) as `yaml-linter`
+* [PhpCodeFixer](https://github.com/wapmorgan/PhpCodeFixer) as `phpcf`
 
 ## Usage
 
