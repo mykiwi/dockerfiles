@@ -1,4 +1,5 @@
 test:
+	docker-compose run --rm phaudi noverify -version
 	docker-compose run --rm phaudi phploc --version
 	docker-compose run --rm phaudi pdepend --version
 	docker-compose run --rm phaudi phpmd --version

@@ -9,6 +9,7 @@ A simple docker images to run some phpqatools on your php project
 
 ## Available tools
 
+* [NoVerify](https://github.com/VKCOM/noverify) as `noverify`
 * [PHPLoc](http://github.com/sebastianbergmann/phploc) as `phploc`
 * [PHP_Depend](http://pdepend.org/) as `pdepend`
 * [PHP Mess Detector](http://phpmd.org/) as `phpmd`
