@@ -29,10 +29,7 @@ RUN apk add --no-cache \
     wget https://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && \
     chmod +x php-cs-fixer-v2.phar && \
     mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer && \
-    php-cs-fixer self-update && \
-    wget https://github.com/wapmorgan/PhpCodeFixer/releases/download/2.0.17/phpcf-2.0.17.phar  && \
-    chmod +x phpcf-2.0.17.phar && \
-    mv phpcf-2.0.17.phar /usr/local/bin/phpcf
+    php-cs-fixer self-update
 
 FROM composer as src
 
