@@ -10,6 +10,18 @@ RUN set -xe && \
     go build && \
     git clone https://github.com/JetBrains/phpstorm-stubs.git --depth 1 /usr/src/phpstorm-stubs
 
+FROM php:7.3-fpm-alpine as php-ast
+
+RUN set -xe; \
+    apk add --no-cache \
+        git \
+        $PHPIZE_DEPS; \
+    git clone https://github.com/nikic/php-ast.git; \
+    cd php-ast; \
+    phpize; \
+    ./configure; \
+    make install
+
 FROM composer as src
 
 RUN set -xe; \
@@ -36,24 +48,29 @@ RUN set -xe; \
         friendsofphp/php-cs-fixer \
         heahdude/yaml-linter \
         pdepend/pdepend \
+        phan/phan \
         phpmd/phpmd \
         sensiolabs/security-checker \
         squizlabs/php_codesniffer \
         wapmorgan/php-code-fixer
 
 FROM php:7.3-fpm-alpine
+
 COPY --from=vkcom-noverify /root/go/src/github.com/VKCOM/noverify/noverify /usr/local/bin/
 COPY --from=vkcom-noverify /usr/src/phpstorm-stubs /usr/src/phpstorm-stubs
+COPY --from=php-ast /var/www/html/php-ast/modules/ast.so /usr/local/lib/php/extensions/no-debug-non-zts-20180731/
 COPY --from=src /usr/local/src/ /usr/local/src/
 ENV PATH /usr/local/src/vendor/bin:$PATH
 
-RUN mkdir -p /path/to && \
-    ln -s /usr/src/phpstorm-stubs /path/to/phpstorm-stubs && \
+RUN set -xe; \
+    docker-php-ext-enable ast.so; \
+    mkdir -p /path/to; \
+    ln -s /usr/src/phpstorm-stubs /path/to/phpstorm-stubs; \
     apk add --no-cache \
         bash \
         graphviz \
-        su-exec && \
-    addgroup bar && \
+        su-exec; \
+    addgroup bar; \
     adduser -D -H -G bar foo
 
 WORKDIR /project
