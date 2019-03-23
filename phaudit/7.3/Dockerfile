@@ -58,11 +58,12 @@ FROM php:7.3-fpm-alpine
 
 COPY --from=vkcom-noverify /root/go/src/github.com/VKCOM/noverify/noverify /usr/local/bin/
 COPY --from=vkcom-noverify /usr/src/phpstorm-stubs /usr/src/phpstorm-stubs
-COPY --from=php-ast /var/www/html/php-ast/modules/ast.so /usr/local/lib/php/extensions/no-debug-non-zts-20180731/
+COPY --from=php-ast /var/www/html/php-ast/modules/ast.so /usr/local/lib/php/extensions/
 COPY --from=src /usr/local/src/ /usr/local/src/
 ENV PATH /usr/local/src/vendor/bin:$PATH
 
 RUN set -xe; \
+    mv /usr/local/lib/php/extensions/*.so /usr/local/lib/php/extensions/no-debug-non-zts-*; \
     docker-php-ext-enable ast.so; \
     mkdir -p /path/to; \
     ln -s /usr/src/phpstorm-stubs /path/to/phpstorm-stubs; \
