@@ -2,6 +2,7 @@ test:
 	docker-compose run --rm phaudi noverify -version
 	docker-compose run --rm phaudi phploc --version
 	docker-compose run --rm phaudi pdepend --version
+	docker-compose run --rm phaudi phan --version
 	docker-compose run --rm phaudi phpmd --version
 	docker-compose run --rm phaudi phpcs --version
 	docker-compose run --rm phaudi phpcbf --version
