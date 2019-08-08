@@ -44,7 +44,7 @@ RUN set -xe; \
         phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules; \
     composer bin symfony-friendly require --optimize-autoloader \
-        allocine/twigcs \
+        friendsoftwig/twigcs \
         friendsofphp/php-cs-fixer \
         heahdude/yaml-linter \
         pdepend/pdepend \
