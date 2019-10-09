@@ -67,6 +67,7 @@ RUN set -xe; \
     docker-php-ext-enable ast.so; \
     mkdir -p /path/to; \
     ln -s /usr/src/phpstorm-stubs /path/to/phpstorm-stubs; \
+    echo 'memory_limit=-1' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
     apk add --no-cache \
         bash \
         graphviz \
