@@ -52,7 +52,9 @@ RUN set -xe; \
         phpmd/phpmd \
         sensiolabs/security-checker \
         squizlabs/php_codesniffer \
-        wapmorgan/php-code-fixer
+        wapmorgan/php-code-fixer; \
+    composer bin phplint require --optimize-autoloader \
+        jakub-onderka/php-parallel-lint
 
 FROM php:7.3-fpm-alpine
 
