@@ -1,0 +1,24 @@
+name: mykiwi/phaudit
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php:
+          - '7.4'
+          - '7.3'
+          - '7.2'
+          - '7.1'
+          - '7.0'
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+      - name: make build
+        run: |
+          cd phaudit/${{ matrix.php }}
+          docker-compose build
+          cd ../../.tests/phaudit/${{ matrix.php }}
+          make test
