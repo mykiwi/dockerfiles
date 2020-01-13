@@ -66,7 +66,6 @@ COPY --from=vkcom-noverify /usr/src/phpstorm-stubs /usr/src/phpstorm-stubs
 COPY --from=php-ast /var/www/html/php-ast/modules/ast.so /usr/local/lib/php/extensions/
 COPY --from=src /usr/bin/composer /usr/local/bin/composer
 COPY --from=src /usr/local/src/ /usr/local/src/
-COPY --from=src /usr/local/composer /usr/local/composer
 ENV PATH /usr/local/src/vendor/bin:$PATH
 ENV COMPOSER_HOME=/usr/local/composer
 
@@ -82,7 +81,7 @@ RUN set -xe; \
         su-exec; \
     addgroup bar; \
     adduser -D -H -G bar foo; \
-    chown -R foo:bar /usr/local/composer
+    chown -R foo:bar /usr/local/bin/composer
 
 WORKDIR /project
 VOLUME  /project

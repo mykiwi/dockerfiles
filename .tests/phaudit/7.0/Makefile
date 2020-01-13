@@ -11,8 +11,6 @@ test:
 	docker-compose run --rm phaudi phpcf --version
 	docker-compose run --rm phaudi phpmetrics --version
 	docker-compose run --rm phaudi php-cs-fixer --version
-	docker-compose run --rm phaudi phpstan --version
-	docker-compose run --rm phaudi yaml-linter --version
 	docker-compose run --rm phaudi security-checker --version
 
 clean:

@@ -37,17 +37,9 @@ RUN set -xe; \
         sebastian/phpdcd; \
     composer bin phpmetrics require --optimize-autoloader \
         phpmetrics/phpmetrics; \
-    composer bin phpstan require --optimize-autoloader \
-        phpstan/phpstan \
-        phpstan/phpstan-dibi \
-        phpstan/phpstan-doctrine \
-        phpstan/phpstan-phpunit \
-        phpstan/phpstan-shim \
-        phpstan/phpstan-strict-rules; \
     composer bin symfony-friendly require --optimize-autoloader \
         friendsoftwig/twigcs \
         friendsofphp/php-cs-fixer \
-        heahdude/yaml-linter \
         pdepend/pdepend \
         phan/phan \
         phpmd/phpmd \
