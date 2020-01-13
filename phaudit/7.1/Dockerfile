@@ -22,7 +22,8 @@ RUN set -xe; \
     ./configure; \
     make install
 
-FROM composer as src
+FROM php:7.1-fpm-alpine as src
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN set -xe; \
     mkdir -p /usr/local/src; \
