@@ -1,6 +1,7 @@
 # Phaudit
 
-- [`7.3`, `latest` (*phaudit/7.3/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.3/Dockerfile)
+- [`7.4`, `latest` (*phaudit/7.4/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.4/Dockerfile)
+- [`7.3` (*phaudit/7.3/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.3/Dockerfile)
 - [`7.2` (*phaudit/7.2/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.2/Dockerfile)
 - [`7.1` (*phaudit/7.1/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.1/Dockerfile)
 - [`7.0` (*phaudit/7.0/Dockerfile*)](https://github.com/mykiwi/dockerfiles/tree/master/phaudit/7.0/Dockerfile)
@@ -9,6 +10,7 @@ A simple docker images to run some phpqatools on your php project
 
 ## Available tools
 
+* [composer-unused](https://github.com/icanhazstring/composer-unused) as `composer unused`
 * [NoVerify](https://github.com/VKCOM/noverify) as `noverify`
 * [PHPLoc](http://github.com/sebastianbergmann/phploc) as `phploc`
 * [PHP_Depend](http://pdepend.org/) as `pdepend`
@@ -19,9 +21,13 @@ A simple docker images to run some phpqatools on your php project
 * [PHP Dead Code Detector](http://github.com/sebastianbergmann/phpdcd) as `phpdcd`
 * [PhpMetrics](http://www.phpmetrics.org/) as `phpmetrics`
 * [PHP Coding Standards Fixer](http://cs.sensiolabs.org/) as `php-cs-fixer`
+* [PHP Static Analysis Tool](https://github.com/phpstan/phpstan) as `phpstan`
 * [Security Checker](https://security.symfony.com/) as `security-checker`
 * [Twig Coding Standards](https://github.com/allocine/twigcs) as `twigcs`
+* [YAML Linter](https://github.com/HeahDude/yaml-linter) as `yaml-linter`
 * [PhpCodeFixer](https://github.com/wapmorgan/PhpCodeFixer) as `phpcf`
+* [PHP Parallel Lint](https://github.com/JakubOnderka/PHP-Parallel-Lint) as `parallel-lint`
+* [composer-unused](https://github.com/composer-unused/composer-unused) as `composer-unused`
 
 ## Usage
 

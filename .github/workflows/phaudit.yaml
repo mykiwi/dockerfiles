@@ -1,0 +1,51 @@
+name: mykiwi/phaudit
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php:
+          - '7.4'
+          - '7.3'
+          - '7.2'
+          - '7.1'
+          - '7.0'
+    env:
+      DOCKER_BUILDX_VERSION: 0.3.1
+      DOCKER_BUILDKIT: 1
+      COMPOSE_DOCKER_CLI_BUILD: 1
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+      - name: upgrade docker
+        run: |
+          DOCKER_CLI_PLUGINS="${DOCKER_CONFIG:-${HOME}/.docker}/cli-plugins"
+          BUILDX="${DOCKER_CLI_PLUGINS}/docker-buildx"
+          set +e
+          docker buildx version &> /dev/null
+          BUILDX_ALREADY_INSTALLED=$?
+          set -e
+          FILE=$(mktemp)
+          curl --silent -L "https://github.com/docker/buildx/releases/download/v${DOCKER_BUILDX_VERSION}/buildx-v${DOCKER_BUILDX_VERSION}.$(uname -s | tr '[:upper:]' '[:lower:]')-amd64" -o $FILE
+          chmod +x ${FILE}
+          mkdir -p "${DOCKER_CLI_PLUGINS}"
+          mv ${FILE} "${BUILDX}"
+          printf "🐳 $(tput bold &> /dev/null)docker buildx$(tput sgr0 &> /dev/null) has been installed on your computer.\nIt's located here: ${BUILDX}\n"
+
+          curl -L https://github.com/docker/compose/releases/download/1.25.1/docker-compose-`uname -s`-`uname -m` -o docker-compose
+          sudo mv docker-compose /usr/local/bin/
+          chmod +x /usr/local/bin/docker-compose
+
+          docker version
+          docker-compose version
+      - name: docker build
+        run: |
+          cd phaudit/${{ matrix.php }}
+          docker-compose build
+      - name: tests
+        run: |
+          cd .tests/phaudit/${{ matrix.php }}
+          make test
