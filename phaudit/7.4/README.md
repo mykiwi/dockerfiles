@@ -23,7 +23,7 @@ A simple docker images to run some phpqatools on your php project
 * [PHP Coding Standards Fixer](http://cs.sensiolabs.org/) as `php-cs-fixer`
 * [PHP Static Analysis Tool](https://github.com/phpstan/phpstan) as `phpstan`
 * [Security Checker](https://security.symfony.com/) as `security-checker`
-* [Twig Coding Standards](https://github.com/allocine/twigcs) as `twigcs`
+* [Twig Coding Standards](https://github.com/friendsoftwig/twigcs) as `twigcs`
 * [YAML Linter](https://github.com/HeahDude/yaml-linter) as `yaml-linter`
 * [PhpCodeFixer](https://github.com/wapmorgan/PhpCodeFixer) as `phpcf`
 * [PHP Parallel Lint](https://github.com/JakubOnderka/PHP-Parallel-Lint) as `parallel-lint`
