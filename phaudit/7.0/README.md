@@ -20,7 +20,7 @@ A simple docker images to run some phpqatools on your php project
 * [PhpMetrics](http://www.phpmetrics.org/) as `phpmetrics`
 * [PHP Coding Standards Fixer](http://cs.sensiolabs.org/) as `php-cs-fixer`
 * [Security Checker](https://security.symfony.com/) as `security-checker`
-* [Twig Coding Standards](https://github.com/allocine/twigcs) as `twigcs`
+* [Twig Coding Standards](https://github.com/friendsoftwig/twigcs) as `twigcs`
 * [PhpCodeFixer](https://github.com/wapmorgan/PhpCodeFixer) as `phpcf`
 
 ## Usage
