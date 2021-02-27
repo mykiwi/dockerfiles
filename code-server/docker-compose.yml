@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: mykiwi/code-server
+    ports:
+      - '80:80'
+    environment:
+    - PASSWORD=password

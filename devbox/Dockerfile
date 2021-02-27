@@ -108,6 +108,18 @@ RUN set -xe \
       && composer global require --optimize-autoloader pyrech/composer-changelogs \
  '
 
+ARG BAT_VERSION=0.17.1
+RUN set -xe \
+ && ${CURL} https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb > bat.deb && dpkg -i bat.deb && rm bat.deb \
+ && ${CURL} https://gobinaries.com/chriswalz/bit | sh \
+ && ${INSTALL} \
+      exa \
+      fd-find \
+      jq \
+      ripgrep \
+      tmate \
+      tmux
+
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
