@@ -115,6 +115,7 @@ RUN set -xe \
  && ${INSTALL} \
       exa \
       fd-find \
+      htop \
       jq \
       ripgrep \
       tmate \
