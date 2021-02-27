@@ -90,6 +90,7 @@ RUN set -xe \
       sudo \
       zsh \
  && useradd mykiwi --shell /bin/zsh \
+ && usermod -aG docker mykiwi \
  && echo '%mykiwi ALL= NOPASSWD: ALL' >> /etc/sudoers \
  && mkdir -p /home/mykiwi/.ssh/ \
  && mkdir -p /home/mykiwi/.php/ini \
@@ -117,15 +118,19 @@ RUN set -xe \
       fd-find \
       htop \
       jq \
+      neovim \
       ripgrep \
       tmate \
-      tmux
+      tmux \
+ && ln -s /usr/lib/cargo/bin/fd /usr/local/bin/fd
 
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
+ENV TERM xterm
+ENV USER mykiwi
 USER mykiwi
 WORKDIR /home/mykiwi
 CMD ["zsh"]
